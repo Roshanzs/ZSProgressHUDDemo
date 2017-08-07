@@ -6,7 +6,7 @@
 ```
 真正的一行代码调用,简单快速
 ```
-###代码导入
+### 代码导入
 * 一 , 导入`ZSProgressHUD`文件夹到你的项目中 (文件夹在 Demo 中可以找到)
 * 二 , 在你需要使用的 viewController 中，`#import "ZSProgressHUD.h"`;
 * 三 , 在需要显示的位置敲入代码即可
@@ -23,7 +23,7 @@
 
 ````
 
-*其中进度显示的需要传一个进度值(0.0 ~ 1.0)
+* 其中进度显示的需要传一个进度值(0.0 ~ 1.0)
 
 ````
 MBProgressHUD *p = [ZSProgressHUD showProgressCircle:@"进度"];
@@ -32,13 +32,13 @@ p.progress = 0.2;
 
 ````
 
-*手动隐藏
+* 手动隐藏
 ````
 [ZSProgressHUD hide];
 
 ````
 
-*此外ZSProgressHUD还提供了Alert显示
+* 此外ZSProgressHUD还提供了Alert显示
 
 用法同上
 
@@ -57,7 +57,7 @@ p.progress = 0.2;
     
 ````
 
-*是不是超级简单方便了  哈哈!
+* 是不是超级简单方便了  哈哈!
 
 ## 提示 Tips
 
