@@ -133,7 +133,7 @@ typedef enum{
 
 
 //中间一个按钮
-+(void)ZSAlartWithOneBtnTitle:(NSString *)title Message:(NSString *)message BtnStr:(NSString *)Btnstr WithCancelBtn:(BOOL)cancelbtn ClickBlock:(void(^)())btnClickBlock{
++(void)ZSAlertWithOneBtnTitle:(NSString *)title Message:(NSString *)message BtnStr:(NSString *)Btnstr WithCancelBtn:(BOOL)cancelbtn ClickBlock:(void(^)())btnClickBlock{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:Btnstr style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         btnClickBlock();
@@ -145,56 +145,6 @@ typedef enum{
         }];
         [alert addAction:Cancelaction];
     }
-    //获取到窗口最上层的viewcontroller
-    UIWindow *view = [self lastWindow];
-    [view.rootViewController presentViewController:alert animated:YES completion:^{
-    }];
-}
-
-//中间一个按钮3秒后消失
-+(UIAlertController *)ZSAlartDelayWithOneBtnTitle:(NSString *)title Message:(NSString *)message BtnStr:(NSString *)Btnstr WithCancelBtn:(BOOL)cancelbtn ClickBlock:(void(^)())btnClickBlock{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:Btnstr style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        btnClickBlock();
-    }];
-    [alert addAction:action];
-    
-    if (cancelbtn) {
-        UIAlertAction *Cancelaction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        }];
-        [alert addAction:Cancelaction];
-    }
-    //获取到窗口最上层的viewcontroller
-    UIWindow *view = [self lastWindow];
-
-    [view.rootViewController presentViewController:alert animated:YES completion:^{
-    }];
-    return alert;
-}
-
-+ (UIWindow *)lastWindow
-{
-    NSArray *windows = [UIApplication sharedApplication].windows;
-    for(UIWindow *window in [windows reverseObjectEnumerator]) {
-        
-        if ([window isKindOfClass:[UIWindow class]] &&
-            CGRectEqualToRect(window.bounds, [UIScreen mainScreen].bounds))
-            
-            return window;
-    }
-    
-    return [UIApplication sharedApplication].keyWindow;
-}
-
-
-
-
-+(void)ZSAlartWithOneBtnTitle:(NSString *)title Message:(NSString *)message{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    [alert addAction:action];
-    
     //获取到窗口最上层的viewcontroller
     UIWindow *view = [self lastWindow];
     [view.rootViewController presentViewController:alert animated:YES completion:^{
@@ -203,7 +153,7 @@ typedef enum{
 
 
 //底部一个按钮
-+(void)ZSAlartWithOneSheetBtnTitle:(NSString *)title Message:(NSString *)message BtnStr:(NSString *)Btnstr WithCancelBtn:(BOOL)cancelbtn ClickBlock:(void(^)())btnClickBlock{
++(void)ZSAlertWithOneSheetBtnTitle:(NSString *)title Message:(NSString *)message BtnStr:(NSString *)Btnstr WithCancelBtn:(BOOL)cancelbtn ClickBlock:(void(^)())btnClickBlock{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *action = [UIAlertAction actionWithTitle:Btnstr style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         btnClickBlock();
@@ -223,7 +173,7 @@ typedef enum{
 }
 
 //中间弹框修改框
-+(void)ZSAlartWithBoxBtnTitle:(NSString *)title Message:(NSString *)message BtnStr:(NSString *)Btnstr WithCancelBtn:(BOOL)cancelbtn ClickBlock:(void(^)(NSString * str))btnClickBlock{
++(void)ZSAlertWithBoxBtnTitle:(NSString *)title Message:(NSString *)message BtnStr:(NSString *)Btnstr WithCancelBtn:(BOOL)cancelbtn ClickBlock:(void(^)(NSString * str))btnClickBlock{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder = [NSString stringWithFormat:@"请输入新的%@",title];
@@ -244,5 +194,23 @@ typedef enum{
     [view.rootViewController presentViewController:alert animated:YES completion:^{
     }];
 }
+
+
+
++ (UIWindow *)lastWindow
+{
+    NSArray *windows = [UIApplication sharedApplication].windows;
+    for(UIWindow *window in [windows reverseObjectEnumerator]) {
+        
+        if ([window isKindOfClass:[UIWindow class]] &&
+            CGRectEqualToRect(window.bounds, [UIScreen mainScreen].bounds))
+            
+            return window;
+    }
+    
+    return [UIApplication sharedApplication].keyWindow;
+}
+
+
 
 @end
