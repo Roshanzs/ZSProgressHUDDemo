@@ -1,5 +1,5 @@
 # ZSProgressHUDDemo
-一个超简单的活动指示器。适配横屏,一句代码搞定
+一个超简单的活动指示器。适配横屏,一句代码搞定,ZSProgressHUD是建立在MBProgressHUD上的二次封装,在此感谢MBProgressHUD
 
 ![image](https://raw.githubusercontent.com/Roshanzs/ZSProgressHUDDemo/master/ZSProgressHUDDemo.gif)
 
